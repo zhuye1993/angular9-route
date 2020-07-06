@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from 'src/app/auth/http.service';
 
 @Component({
   selector: 'app-first',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./first.component.css']
 })
 export class FirstComponent implements OnInit {
-
-  constructor() { }
+  data: any[]
+  constructor(private http: HttpService) { }
 
   ngOnInit() {
+    document.cookie = '123456'
+    this.http.getData().subscribe((res:any) => {
+      console.log(res);
+      
+      this.data = res.data
+    })
   }
 
 }
