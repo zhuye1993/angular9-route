@@ -7,17 +7,21 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpService } from './auth/http.service';
 import { NoopInterceptor } from './auth/noop.interceptor';
+import { AdvertisementComponent } from './advertisement/advertisement.component';
+import { ShareModule } from './dynamic-banner/share.module';
 @NgModule({
    imports: [
+      ShareModule,
       BrowserModule,
       HttpClientModule,
       AppRoutingModule
    ],
    declarations: [
       AppComponent,
-      LoginComponent
+      LoginComponent,
+      AdvertisementComponent
    ],
-  
+   
    providers: [
       HttpService,
       { provide: HTTP_INTERCEPTORS, useClass: NoopInterceptor, multi: true }
